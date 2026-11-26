@@ -67,7 +67,7 @@ public abstract class UpgradeProcessorBase extends AbstractProcessorLight implem
 
 
     @Override
-    public final void recycle() {
+    public void recycle() {
         // Currently a NO-OP as upgrade processors are not recycled.
     }
 

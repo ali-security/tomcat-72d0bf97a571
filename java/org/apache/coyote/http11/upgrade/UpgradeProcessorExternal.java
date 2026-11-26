@@ -150,6 +150,17 @@ public class UpgradeProcessorExternal extends UpgradeProcessorBase {
     }
 
 
+    @Override
+    public void recycle() {
+        /*
+         * close() is only called if the application closes the WebConnection. The container calls recycle() on every
+         * path that releases an upgrade processor so always de-register the statistics for this connection here else
+         * the UpgradeInfo would be retained by the UpgradeGroupInfo indefinitely.
+         */
+        upgradeInfo.setGroupInfo(null);
+    }
+
+
     // ----------------------------------------- Unimplemented Processor methods
 
     @Override
